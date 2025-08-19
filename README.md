@@ -12,8 +12,8 @@
 # 📦 Installation & Setup
 1. Clone Repository
 ```bash 
-git clone https://github.com/your-username/smart-device-api.git
-cd smart-device-api
+git clone https://github.com/Vaibhav0x/smart_device_platform.git
+cd smart_device_plateform
 ```
 
 2. Setup Virtual Environment 
@@ -64,11 +64,10 @@ Create a file .env in project root:
 ```bash
 POSTGRES_DB=smart_devices
 POSTGRES_USER=vaibhav
-POSTGRES_PASSWORD=vaibhav
+POSTGRES_PASSWORD=your_db_password
 POSTGRES_HOST=localhost
 POSTGRES_PORT=5432
 DEBUG=True
-SECRET_KEY=your-secret-key
 ```
 
 6. Run Migrations
@@ -214,15 +213,26 @@ Response:
 
 4. Update Device
 
-PUT `/api/devices/{id}/`
+PUT `/api/devices/id/`
 
 5. Partial Update Device
 
-PATCH `/api/devices/{id}/`
+PATCH `/api/devices/id/`
 
 6. Delete Device
 
-DELETE `/api/devices/{id}/`
+DELETE `/api/devices/id/`
+
+7. Device Heartbeart
+POST `/devices/id/heartbeat` → Update last_active_at.
+
+Request:
+```json
+{
+  "status": "active"
+}
+
+```
 
 7. Filtering & Search
 
@@ -233,6 +243,14 @@ Supports query parameters:
 ?status=ON
 
 ?search=Bulb
+
+8. Data & Analytics
+Endpoints
+`POST` `/devices/:id/logs` → Create log entry.
+`GET` `/devices/:id/logs?limit=10` → Fetch last 10 logs.
+`GET` `/devices/:id/usage?range=24h` → Aggregated usage.
+
+
 
 
 ## 📜 License

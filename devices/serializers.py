@@ -5,9 +5,8 @@ from .models import Device, DeviceLog
 User = get_user_model()
 
 
-# -----------------------------
+
 # User Authentication Serializers
-# -----------------------------
 class SignupSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, min_length=6)
 
@@ -46,9 +45,8 @@ class LoginSerializer(serializers.Serializer):
         return data
 
 
-# -----------------------------
+
 # Device Serializers
-# -----------------------------
 class DeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Device
